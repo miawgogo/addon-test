@@ -38,6 +38,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
        iproute2 \
        python3 \
+       tcpdump \
        python3-pip \
        lsb-release \
        netcat-openbsd \

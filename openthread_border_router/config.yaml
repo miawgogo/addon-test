@@ -1,5 +1,5 @@
 ---
-version: 2.13.2
+version: 2.13.3
 slug: openthread_border_router-test
 name: OpenThread Border Router-test
 description: OpenThread Border Router add-on test

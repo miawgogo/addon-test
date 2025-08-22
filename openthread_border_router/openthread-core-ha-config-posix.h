@@ -42,8 +42,6 @@
  */
 #define OPENTHREAD_POSIX_CONFIG_NETIF_PREFIX_ROUTE_METRIC 64
 
-#define OPENTHREAD_POSIX_CONFIG_UPSTREAM_DNS_BIND_TO_INFRA_NETIF 0
-
 /**
  * Increase delay aware queue management entry list size from its default of
  * 16 to 64. This is to avoid/decrease the number of "Failed to get forwarded

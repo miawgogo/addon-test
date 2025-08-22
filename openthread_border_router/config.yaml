@@ -1,8 +1,8 @@
 ---
 version: 2.13.0
-slug: openthread_border_router
-name: OpenThread Border Router
-description: OpenThread Border Router add-on
+slug: openthread_border_router-test
+name: OpenThread Border Router-test
+description: OpenThread Border Router add-on test
 url: >-
   https://github.com/home-assistant/addons/tree/master/openthread_border_router
 arch:

@@ -1,5 +1,5 @@
 ---
-version: 2.13.11
+version: a5bbbcdb9b3d8e196390a0317d4613910726a047
 slug: openthread_border_router-test
 name: OpenThread Border Router-test
 description: OpenThread Border Router add-on test

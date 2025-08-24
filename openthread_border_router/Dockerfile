@@ -54,11 +54,6 @@ RUN \
     && git checkout ${OTBR_VERSION} \
     && git submodule update --init \
     && ./script/bootstrap \
-    && ( \
-        cd third_party/openthread/repo \
-        && patch -p1 < /usr/src/0001-channel-monitor-disable-by-default.patch \
-        && cp /usr/src/openthread-core-ha-config-posix.h . \
-       ) \
     # Mimic rt_tables_install \
     && echo "88 openthread" >> /etc/iproute2/rt_tables \
     # Mimic otbr_install \

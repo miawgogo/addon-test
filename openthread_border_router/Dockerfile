@@ -61,8 +61,6 @@ RUN \
         -DBUILD_TESTING=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DOTBR_FEATURE_FLAGS=ON \
-        -DOTBR_DNSSD_DISCOVERY_PROXY=ON \
-        -DOTBR_SRP_ADVERTISING_PROXY=ON \
         -DOTBR_MDNS=openthread \
         -DOTBR_VERSION= \
         -DOT_PACKAGE_VERSION= \

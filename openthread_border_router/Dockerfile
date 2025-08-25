@@ -97,7 +97,7 @@ RUN \
     && pip install --break-system-packages \
        universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
     # configure the dhcpv6 stuff to enable ipv6 global egress \
-    && ./script/_dhcpv6_pd_ref \
+    && /usr/bin/bash script/_dhcpv6_pd_ref \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

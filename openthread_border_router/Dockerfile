@@ -14,7 +14,7 @@ ENV PLATFORM debian
 ENV RELEASE 1
 ENV WEB_GUI 1
 ENV REST_API 1
-ENV DHCPV6_PD_REF 0
+ENV DHCPV6_PD_REF 1
 ENV DOCKER 1
 
 COPY 0001-channel-monitor-disable-by-default.patch /usr/src
@@ -85,6 +85,7 @@ RUN \
         -DOT_THREAD_VERSION=1.4 \
         -DOT_PROJECT_CONFIG="/usr/src/openthread-core-ha-config-posix.h" \
         -DOT_RCP_RESTORATION_MAX_COUNT=2 \
+        -DOTBR_DHCP6_PD=ON \
         && cd build/otbr/ \
         && ninja \
         && ninja install) \

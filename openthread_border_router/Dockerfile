@@ -14,7 +14,9 @@ ENV PLATFORM debian
 ENV RELEASE 1
 ENV WEB_GUI 1
 ENV REST_API 1
-ENV DHCPV6_PD_REF 1
+# it attempt to install it using systemd which breaks
+# so we are manuall installing and managing this service
+ENV DHCPV6_PD_REF 0
 ENV DOCKER 1
 
 COPY 0001-channel-monitor-disable-by-default.patch /usr/src
@@ -37,8 +39,11 @@ RUN \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        iproute2 \
+       dhcpcd \
+       radvd \
        python3 \
        tcpdump \
+       dbus \
        python3-pip \
        lsb-release \
        netcat-openbsd \
@@ -91,6 +96,8 @@ RUN \
         && ninja install) \
     && pip install --break-system-packages \
        universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
+    # configure the dhcpv6 stuff to enable ipv6 global egress \
+    && ./script/_dhcpv6_pd_ref \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

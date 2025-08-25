@@ -69,7 +69,7 @@ RUN \
         -DOTBR_MDNS=openthread \
         -DOTBR_VERSION= \
         -DOT_PACKAGE_VERSION= \
-        -DOTBR_DBUS=OFF \
+        -DOTBR_DBUS=ON \
         -DOT_POSIX_RCP_BUS_UART=ON \
         -DOT_LINK_RAW=1 \
         -DOTBR_VENDOR_NAME="Home Assistant" \

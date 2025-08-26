@@ -12,5 +12,5 @@
 backbone_if="$(bashio::api.supervisor 'GET' '/network/info' '' 'first(.interfaces[] | select (.primary == true)) .interface')"
 sed -i "s/REPLACEME/$backbone_if/g" /etc/dhcpcd.conf
 if bashio::config.true 'dhcp6pd'; then
-    /usr/sbin/dhcpcd -q -d
+    /usr/sbin/dhcpcd -q
 fi

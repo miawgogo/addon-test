@@ -53,7 +53,7 @@ config_ra()
         publish_new_prefix=true
     fi
 
-    logger "$LOG_TAG $reason start config radvd"
+    logger -s "$LOG_TAG $reason start config radvd"
 
 sudo tee "${RADVD_CONF}" > /dev/null <<EOF
 interface ${WPAN_INTERFACE}
@@ -63,7 +63,7 @@ interface ${WPAN_INTERFACE}
 EOF
 
     if "$deprecate_old_prefix"; then
-        logger "$LOG_TAG Deprecating old prefix $old_prefix/$old_prefix_len"
+        logger -s "$LOG_TAG Deprecating old prefix $old_prefix/$old_prefix_len"
 sudo tee -a "${RADVD_CONF}" > /dev/null <<EOF
     prefix ${old_prefix}/${old_prefix_len}
     {
@@ -77,7 +77,7 @@ EOF
     fi
 
     if $publish_new_prefix; then
-        logger "$LOG_TAG Publishing new prefix $new_prefix/$new_prefix_len  PLTime: $new_pltime  VLTime: $new_vltime"
+        logger -s "$LOG_TAG Publishing new prefix $new_prefix/$new_prefix_len  PLTime: $new_pltime  VLTime: $new_vltime"
 sudo tee -a "${RADVD_CONF}" > /dev/null <<EOF
     prefix ${new_prefix}/${new_prefix_len}
     {
@@ -103,7 +103,7 @@ if [ ${interface} = ${UPSTREAM_INTERFACE} ]; then
         # Split the variable into name and value
         name="${var%%=*}"
         value="${var#*=}"
-        logger "$LOG_TAG $reason sysenv: $name=$value"
+        logger -s "$LOG_TAG $reason sysenv: $name=$value"
     done
 
     case $reason in

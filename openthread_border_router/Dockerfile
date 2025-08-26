@@ -96,8 +96,8 @@ RUN \
         && cd build/otbr/ \
         && ninja \
         && ninja install) \
-    && pip install --break-system-packages \
-       universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
+    #&& pip install --break-system-packages \
+      # universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
     # replace the temp interface with something more unique\
     && sed -i 's/UPSTREAM_INTERFACE="eth0"/UPSTREAM_INTERFACE="REPLACEME"/g' /usr/src/ot-br-posix/script/_dhcpv6_pd_ref \
     # configure the dhcpv6 stuff to enable ipv6 global egress \

@@ -114,9 +114,8 @@ if [ ${interface} = ${UPSTREAM_INTERFACE} ]; then
                { [ -n "$old_dhcp6_ia_pd1_prefix1" ] && [ -n "$old_dhcp6_ia_pd1_prefix1_length" ]; }; then
                 config_ra "$old_dhcp6_ia_pd1_prefix1" "$old_dhcp6_ia_pd1_prefix1_length" \
                     "$new_dhcp6_ia_pd1_prefix1" "$new_dhcp6_ia_pd1_prefix1_length" "$new_dhcp6_ia_pd1_prefix1_pltime"  "$new_dhcp6_ia_pd1_prefix1_vltime"
-                if systemctl is-active network.target; then
-                    sudo systemctl reload-or-restart radvd || logger "$LOG_TAG Failed to reload radvd"
-                fi
+                s6-rc stop radvd
+                s6-rc start radvd 
             fi
             ;;
     esac

@@ -100,6 +100,8 @@ RUN \
     && sed -i 's/UPSTREAM_INTERFACE="eth0"/UPSTREAM_INTERFACE="REPLACEME"/g' /usr/src/ot-br-posix/script/_dhcpv6_pd_ref \
     # configure the dhcpv6 stuff to enable ipv6 global egress \
     && /usr/bin/bash ./script/_dhcpv6_pd_ref \
+    # Replace Openthreads dhcpv6 hooks with s6 compatible services
+    && cp /usr/src/ot-br-posix/dhcp-hooks/* /etc/ \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

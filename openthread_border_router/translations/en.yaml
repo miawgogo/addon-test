@@ -29,7 +29,7 @@ configuration:
     name: OTBR firewall
     description: >-
       Use OpenThread Border Router firewall to block unnecessary traffic.
-  dhcp6-pd:
+  dhcp6pd:
     name: dhcpv6 pd
     description: >-
       Enable DHCPv6 Prefix Delegation to aquire a IPv6 prefix to allow for access to IPv6 hosts on the internet.

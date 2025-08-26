@@ -10,8 +10,11 @@
 
 
 backbone_if="$(bashio::api.supervisor 'GET' '/network/info' '' 'first(.interfaces[] | select (.primary == true)) .interface')"
+# replace the generic default with the containers intiface
 sed -i "s/REPLACEME/$backbone_if/g" /etc/dhcpcd.conf
-sed -i "s/=\"eth0\"/=\"$backbone_if\"/g" /etc/dhcpcd.conf
+sed -i "s/=\"eth0\"/=\"$backbone_if\"/g" /etc/dhcpcd.enter-hook
+sed -i "s/=\"eth0\"/=\"$backbone_if\"/g" /etc/dhcpcd.exit-hook
+# only run if the user wants it
 if bashio::config.true 'dhcp6pd'; then
     /usr/sbin/dhcpcd -d
 fi

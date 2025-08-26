@@ -104,6 +104,7 @@ RUN \
     && ./../install_dhcpd.sh \
     # Replace Openthreads dhcpv6 hooks with s6 compatible services
     && cp /usr/src/dhcp-hooks/* /etc/ \
+    && chmod 755 /etc/dhcpcd.*-hook \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

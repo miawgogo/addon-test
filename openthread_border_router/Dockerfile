@@ -21,6 +21,7 @@ ENV DOCKER 1
 
 COPY 0001-channel-monitor-disable-by-default.patch /usr/src
 COPY openthread-core-ha-config-posix.h /usr/src
+ADD dhcp-hooks /usr/src/dhcp-hooks
 # Required and installed (script/bootstrap) can be removed after build
 ENV OTBR_BUILD_DEPS build-essential ninja-build cmake wget ca-certificates \
   libreadline-dev libncurses-dev libcpputest-dev libdbus-1-dev libavahi-common-dev \
@@ -101,7 +102,7 @@ RUN \
     # configure the dhcpv6 stuff to enable ipv6 global egress \
     && /usr/bin/bash ./script/_dhcpv6_pd_ref \
     # Replace Openthreads dhcpv6 hooks with s6 compatible services
-    && cp /usr/src/ot-br-posix/dhcp-hooks/* /etc/ \
+    && cp /usr/src/dhcp-hooks/* /etc/ \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

@@ -45,5 +45,6 @@ schema:
   autoflash_firmware: bool
   otbr_log_level: list(debug|info|notice|warning|error|critical|alert|emergency)
   firewall: bool
+  dhcp6-pd: bool
   nat64: bool
 startup: services

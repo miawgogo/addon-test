@@ -69,7 +69,7 @@ RUN \
         -DOTBR_MDNS=openthread \
         -DOTBR_VERSION= \
         -DOT_PACKAGE_VERSION= \
-        -DOTBR_DBUS=ON \
+        -DOTBR_DBUS=OFF \
         -DOT_POSIX_RCP_BUS_UART=ON \
         -DOT_LINK_RAW=1 \
         -DOTBR_VENDOR_NAME="Home Assistant" \
@@ -96,6 +96,8 @@ RUN \
         && ninja install) \
     && pip install --break-system-packages \
        universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
+    # replace the temp interface with something more unique\
+    sed -i 's/UPSTREAM_INTERFACE="eth0"/UPSTREAM_INTERFACE="REPLACEME"/g' script/_dhcpv6_pd_ref \
     # configure the dhcpv6 stuff to enable ipv6 global egress \
     && /usr/bin/bash script/_dhcpv6_pd_ref \
     && apt-get purge -y --auto-remove \

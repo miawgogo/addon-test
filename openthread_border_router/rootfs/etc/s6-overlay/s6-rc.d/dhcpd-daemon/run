@@ -7,8 +7,10 @@
 
 # shellcheck disable=SC1091
 
+
+
 backbone_if="$(bashio::api.supervisor 'GET' '/network/info' '' 'first(.interfaces[] | select (.primary == true)) .interface')"
 sed -i "s/REPLACEME/$backbone_if/g" /etc/dhcpcd.conf
-
-/var/lib/dhcpcd /run/dhcpcd /etc/wpa_supplicant /etc/dhcpcd.conf /etc/resolv.conf
-
+if bashio::config.true 'dhcp6-pd'; then
+    /usr/sbin/dhcpcd -q -d
+fi

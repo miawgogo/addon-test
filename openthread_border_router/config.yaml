@@ -1,5 +1,5 @@
 ---
-version: 737a75699d5a49ead674429a8fe1fe1f3afb76fd
+version: be25767da37ca04a7707523129c54d79f971bff1
 slug: openthread_border_router-test
 name: OpenThread Border Router-test
 description: OpenThread Border Router add-on test
@@ -31,6 +31,7 @@ options:
   otbr_log_level: notice
   firewall: true
   nat64: false
+  dhcp6-pd: true
 ports:
   8080/tcp: null
   8081/tcp: null

@@ -32,7 +32,7 @@ configuration:
   dhcp6-pd:
     name: dhcpv6 pd
     description: >-
-      Enable DHCPv6 Prefix Delegation to aquire a IPv6 prefix to allow for access to IPv6 hosts on the internet
+      Enable DHCPv6 Prefix Delegation to aquire a IPv6 prefix to allow for access to IPv6 hosts on the internet.
   nat64:
     name: NAT64
     description: >-

@@ -13,7 +13,7 @@ if ! bashio::config.equals "meshprefix" ""; then
     prefix=$(echo $PREFIX | cut -d="/" -f1)
     prefix_len=$(echo $PREFIX | cut -d="/" -f2)
 
-    sudo tee -a "${RADVD_CONF}" > /dev/null <<EOF
+    sudo tee -a "/etc/radvd.conf" > /dev/null <<EOF
         prefix ${prefix}/${prefix_len}
         {
             AdvOnLink on;

@@ -14,6 +14,10 @@ if ! bashio::config.equals "meshprefix" ""; then
     prefix_len=$(echo $PREFIX | cut -d="/" -f2)
 
     sudo tee -a "/etc/radvd.conf" > /dev/null <<EOF
+interface wpan0
+{
+    IgnoreIfMissing on;
+    AdvSendAdvert on;
         prefix ${prefix}/${prefix_len}
         {
             AdvOnLink on;
@@ -22,6 +26,7 @@ if ! bashio::config.equals "meshprefix" ""; then
             AdvPreferredLifetime 1800;
             AdvValidLifetime 1800;
         };
+}
 EOF
 
     /usr/sbin/radvd --logmethod stderr_clean

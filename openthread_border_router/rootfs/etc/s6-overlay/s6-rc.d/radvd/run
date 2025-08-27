@@ -31,7 +31,7 @@ interface wpan0
 };
 EOF
 
-    /usr/sbin/radvd -n --logmethod stderr_clean
+    /usr/sbin/radvd -n --logmethod stderr
 
 
 fi

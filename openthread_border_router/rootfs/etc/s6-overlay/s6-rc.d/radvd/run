@@ -18,6 +18,7 @@ if ! bashio::config.equals "meshprefix" ""; then
 interface wpan0
 {
     IgnoreIfMissing on;
+    AdvCurHopLimit 0;
     AdvSendAdvert on;
         prefix ${prefix}/${prefix_len}
         {
@@ -26,7 +27,6 @@ interface wpan0
             AdvRouterAddr off;
             AdvPreferredLifetime 1800;
             AdvValidLifetime 1800;
-            AdvCurHopLimit 0;
         };
 };
 EOF

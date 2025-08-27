@@ -29,10 +29,10 @@ configuration:
     name: OTBR firewall
     description: >-
       Use OpenThread Border Router firewall to block unnecessary traffic.
-  dhcp6pd:
-    name: dhcpv6 pd
+  meshprefix:
+    name: Mesh Prefix
     description: >-
-      Enable DHCPv6 Prefix Delegation to aquire a IPv6 prefix to allow for access to IPv6 hosts on the internet.
+      a IPv6 GUA prefix to be assigned on the mesh for public IPv6 access
   nat64:
     name: NAT64
     description: >-

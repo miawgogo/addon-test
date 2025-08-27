@@ -7,6 +7,25 @@
 
 # shellcheck disable=SC1091
 
-if bashio::config.true 'dhcp6pd'; then
+if ! bashio::config.equals "meshprefix" ""; then
+    PREFIX=$(bashio::config "meshprefix")
+
+    prefix=$(echo $PREFIX | cut -d="/" -f1)
+    prefix_len=$(echo $PREFIX | cut -d="/" -f2)
+
+    sudo tee -a "${RADVD_CONF}" > /dev/null <<EOF
+        prefix ${prefix}/${prefix_len}
+        {
+            AdvOnLink on;
+            AdvAutonomous on;
+            AdvRouterAddr off;
+            AdvPreferredLifetime 1800;
+            AdvValidLifetime 1800;
+        };
+EOF
+
     /usr/sbin/radvd --logmethod stderr_clean
+
+
 fi
+

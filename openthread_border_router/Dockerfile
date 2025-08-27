@@ -41,7 +41,6 @@ RUN \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        iproute2 \
-       dhcpcd \
        radvd \
        python3 \
        tcpdump \
@@ -92,19 +91,13 @@ RUN \
         -DOT_THREAD_VERSION=1.4 \
         -DOT_PROJECT_CONFIG="/usr/src/openthread-core-ha-config-posix.h" \
         -DOT_RCP_RESTORATION_MAX_COUNT=2 \
-        -DOTBR_DHCP6_PD=ON \
+        -DOTBR_DHCP6_PD=OFF \
         && cd build/otbr/ \
         && ninja \
         && ninja install) \
     && pip install --break-system-packages \
        universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
     # replace the temp interface with something more unique\
-    && sed -i 's/UPSTREAM_INTERFACE="eth0"/UPSTREAM_INTERFACE="REPLACEME"/g' /usr/src/ot-br-posix/script/_dhcpv6_pd_ref \
-    # configure the dhcpv6 stuff to enable ipv6 global egress \
-    && ./../install_dhcpd.sh \
-    # Replace Openthreads dhcpv6 hooks with s6 compatible services
-    && cp /usr/src/dhcp-hooks/* /etc/ \
-    && chmod 755 /etc/dhcpcd.*-hook \
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

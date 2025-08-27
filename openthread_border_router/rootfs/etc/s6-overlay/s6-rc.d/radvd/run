@@ -25,8 +25,8 @@ interface wpan0
             AdvOnLink on;
             AdvAutonomous on;
             AdvRouterAddr off;
-            AdvPreferredLifetime 1800;
-            AdvValidLifetime 1800;
+            AdvPreferredLifetime 14400;
+            AdvValidLifetime 86400;
         };
 };
 EOF

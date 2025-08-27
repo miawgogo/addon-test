@@ -22,7 +22,6 @@ ENV DOCKER 1
 COPY 0001-channel-monitor-disable-by-default.patch /usr/src
 COPY openthread-core-ha-config-posix.h /usr/src
 COPY install_dhcpd.sh /usr/src
-ADD dhcp-hooks /usr/src/dhcp-hooks
 # Required and installed (script/bootstrap) can be removed after build
 ENV OTBR_BUILD_DEPS build-essential ninja-build cmake wget ca-certificates \
   libreadline-dev libncurses-dev libcpputest-dev libdbus-1-dev libavahi-common-dev \

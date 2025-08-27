@@ -26,6 +26,7 @@ interface wpan0
             AdvRouterAddr off;
             AdvPreferredLifetime 1800;
             AdvValidLifetime 1800;
+            AdvCurHopLimit 0;
         };
 };
 EOF

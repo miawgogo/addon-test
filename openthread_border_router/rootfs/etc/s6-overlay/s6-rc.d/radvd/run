@@ -13,7 +13,8 @@ if ! bashio::config.equals "meshprefix" ""; then
     prefix=$(echo "$PREFIX" | cut -d '/' -f1)
     prefix_len=$(echo "$PREFIX" | cut -d '/' -f2)
     # Always overwrite
-    sudo tee -a "/etc/radvd.conf" >> /dev/null <<EOF
+    rm "/etc/radvd.conf" 
+    tee -a "/etc/radvd.conf" > /dev/null <<EOF
 interface wpan0
 {
     IgnoreIfMissing on;

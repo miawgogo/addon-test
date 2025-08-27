@@ -90,7 +90,7 @@ RUN \
         -DOT_THREAD_VERSION=1.4 \
         -DOT_PROJECT_CONFIG="/usr/src/openthread-core-ha-config-posix.h" \
         -DOT_RCP_RESTORATION_MAX_COUNT=2 \
-        -DOTBR_DHCP6_PD=OFF \
+        -DOTBR_DHCP6_PD=ON \
         && cd build/otbr/ \
         && ninja \
         && ninja install) \

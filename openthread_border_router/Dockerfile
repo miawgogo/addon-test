@@ -14,14 +14,11 @@ ENV PLATFORM debian
 ENV RELEASE 1
 ENV WEB_GUI 1
 ENV REST_API 1
-# it attempt to install it using systemd which breaks
-# so we are manuall installing and managing this service
 ENV DHCPV6_PD_REF 0
 ENV DOCKER 1
 
 COPY 0001-channel-monitor-disable-by-default.patch /usr/src
 COPY openthread-core-ha-config-posix.h /usr/src
-COPY install_dhcpd.sh /usr/src
 # Required and installed (script/bootstrap) can be removed after build
 ENV OTBR_BUILD_DEPS build-essential ninja-build cmake wget ca-certificates \
   libreadline-dev libncurses-dev libcpputest-dev libdbus-1-dev libavahi-common-dev \
@@ -40,10 +37,8 @@ RUN \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
        iproute2 \
-       radvd \
        python3 \
        tcpdump \
-       dbus \
        python3-pip \
        lsb-release \
        netcat-openbsd \
@@ -82,7 +77,6 @@ RUN \
         -DOTBR_NAT64=ON \
         -DOT_POSIX_NAT64_CIDR="192.168.255.0/24" \
         -DOTBR_DNS_UPSTREAM_QUERY=ON \
-        -DOTBR_DUA_ROUTING=ON \
         -DOPENTHREAD_CONFIG_CHANNEL_MONITOR_ENABLE=OFF \
         -DOT_COAP=OFF \
         -DOT_COAPS=OFF \
@@ -90,13 +84,11 @@ RUN \
         -DOT_THREAD_VERSION=1.4 \
         -DOT_PROJECT_CONFIG="/usr/src/openthread-core-ha-config-posix.h" \
         -DOT_RCP_RESTORATION_MAX_COUNT=2 \
-        -DOTBR_DHCP6_PD=ON \
         && cd build/otbr/ \
         && ninja \
         && ninja install) \
     && pip install --break-system-packages \
        universal-silabs-flasher==${UNIVERSAL_SILABS_FLASHER} \
-    # replace the temp interface with something more unique\
     && apt-get purge -y --auto-remove \
        git \
        nodejs \

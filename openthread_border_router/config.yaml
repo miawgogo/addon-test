@@ -1,5 +1,5 @@
 ---
-version: 0fe3c19634f1b3fa25eacb058bdbf92558dbcea5
+version: 93691374fd91038e773116b9448185e8f49f9021
 slug: openthread_border_router-test
 name: OpenThread Border Router-test
 description: OpenThread Border Router add-on test
@@ -31,7 +31,6 @@ options:
   otbr_log_level: notice
   firewall: true
   nat64: false
-  meshprefix: ""
 ports:
   8080/tcp: null
   8081/tcp: null
@@ -46,6 +45,5 @@ schema:
   autoflash_firmware: bool
   otbr_log_level: list(debug|info|notice|warning|error|critical|alert|emergency)
   firewall: bool
-  meshprefix: str?
   nat64: bool
 startup: services

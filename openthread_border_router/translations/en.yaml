@@ -29,10 +29,6 @@ configuration:
     name: OTBR firewall
     description: >-
       Use OpenThread Border Router firewall to block unnecessary traffic.
-  meshprefix:
-    name: Mesh Prefix
-    description: >-
-      a IPv6 GUA prefix to be assigned on the mesh for public IPv6 access
   nat64:
     name: NAT64
     description: >-

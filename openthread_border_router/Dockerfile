@@ -72,7 +72,9 @@ RUN \
         -DOTBR_WEB=ON \
         -DOTBR_BORDER_ROUTING=ON \
         -DOTBR_REST=ON \
-        -DOT_BORDER_ROUTING_DHCP6_PD=ON \
+        -DOTBR_DHCP6_PD=ON \
+        -DOT_DHCP6_CLIENT=ON \
+        -DOT_DHCP6_SERVER=ON \
         -DOTBR_BACKBONE_ROUTER=ON \
         -DOTBR_TREL=ON \
         -DOTBR_NAT64=ON \

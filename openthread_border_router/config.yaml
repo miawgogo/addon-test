@@ -1,5 +1,5 @@
 ---
-version: 2.15.3-d
+version: 2.15.3-dryfdsyefiuewfiefwhuiewf
 slug: openthread_border_router-up-test
 name: OpenThread Border Router up Test
 description: OpenThread Border Router add-on
@@ -22,7 +22,6 @@ privileged:
   - NET_ADMIN
 devices:
   - /dev/net/tun
-image: homeassistant/{arch}-addon-otbr
 init: false
 options:
   device: null

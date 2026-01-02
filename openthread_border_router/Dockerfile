@@ -57,8 +57,6 @@ RUN \
     && ./script/bootstrap \
     && ( \
         cd third_party/openthread/repo \
-        && patch -p1 < /usr/src/0001-channel-monitor-disable-by-default.patch \
-        && patch -p1 < /usr/src/0002-spinel-Clear-source-match-tables-before-restoring.patch \
         && cp /usr/src/openthread-core-ha-config-posix.h . \
        ) \
     # Mimic rt_tables_install \
